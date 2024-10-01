@@ -14,17 +14,17 @@ const extensions = ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.json', '.json5', '.s
  * CDNを使わずにバンドルしたい場合、以下の配列から該当要素を削除orコメントアウトすればOK
  */
 const externalPackages = [
-	// shiki（コードブロックのシンタックスハイライトで使用中）はテーマ・言語の定義の容量が大きいため、それらはCDNから読み込む
-	{
-		name: 'shiki',
-		match: /^shiki\/(?<subPkg>(langs|themes))$/,
-		path(id: string, pattern: RegExp): string {
-			const match = pattern.exec(id)?.groups;
-			return match
-				? `https://esm.sh/shiki@${packageInfo.dependencies.shiki}/${match['subPkg']}`
-				: id;
-		},
-	},
+	// // shiki（コードブロックのシンタックスハイライトで使用中）はテーマ・言語の定義の容量が大きいため、それらはCDNから読み込む
+	// {
+	// 	name: 'shiki',
+	// 	match: /^shiki\/(?<subPkg>(langs|themes))$/,
+	// 	path(id: string, pattern: RegExp): string {
+	// 		const match = pattern.exec(id)?.groups;
+	// 		return match
+	// 			? `https://esm.sh/shiki@${packageInfo.dependencies.shiki}/${match['subPkg']}`
+	// 			: id;
+	// 	},
+	// },
 ];
 
 const hash = (str: string, seed = 0): number => {
